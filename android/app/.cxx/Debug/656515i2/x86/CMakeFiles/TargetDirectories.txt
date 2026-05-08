@@ -1,2 +1,0 @@
-D:/asset-management/android/app/.cxx/Debug/656515i2/x86/CMakeFiles/edit_cache.dir
-D:/asset-management/android/app/.cxx/Debug/656515i2/x86/CMakeFiles/rebuild_cache.dir

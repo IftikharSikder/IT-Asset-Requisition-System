@@ -1,8 +1,8 @@
-import 'package:asset_management/auth/auth_controller.dart';
-import 'package:asset_management/screens/homepage_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled/auth/auth_controller.dart';
+import 'package:untitled/screens/homepage_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -72,9 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Obx(
-          () => Scaffold(
-        resizeToAvoidBottomInset: true,  // Prevent overflow by resizing for keyboard
-        body: SingleChildScrollView(  // Make the body scrollable
+      () => Scaffold(
+        resizeToAvoidBottomInset: true, // Prevent overflow by resizing for keyboard
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
@@ -83,13 +83,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  // Adjust the height for responsiveness
-                  SizedBox(height: screenHeight * 0.1),  // 20% of the screen height
-                  Image.asset(
-                    'image/assets.png',
-                    height: 100,
-                    width: 150,
-                  ),
+                  SizedBox(height: screenHeight * 0.1),
+                  Image.asset('image/assets.png', height: 100, width: 150),
                   SizedBox(height: 20),
                   Text(
                     'Welcome Back',
@@ -110,24 +105,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 15),
                   Row(
                     children: [
-                      Text(
-                        "Email",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
-                      ),
+                      Text("Email", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
                     ],
                   ),
                   SizedBox(height: 5),
                   TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.email,
-                        size: 18,
-                      ),
+                      prefixIcon: Icon(Icons.email, size: 18),
                       labelText: "Enter your email",
-                      contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(color: Colors.blue),
@@ -147,33 +134,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 15),
                   Row(
                     children: [
-                      Text(
-                        "Password",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
-                      ),
+                      Text("Password", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
                     ],
                   ),
                   SizedBox(height: 5),
                   TextFormField(
                     controller: passwordController,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.password,
-                        size: 18,
-                      ),
+                      prefixIcon: Icon(Icons.password, size: 18),
                       suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              onValue = !onValue;
-                            });
-                          },
-                          icon: (onValue)
-                              ? Icon(Icons.visibility_off)
-                              : Icon(Icons.visibility)),
+                        onPressed: () {
+                          setState(() {
+                            onValue = !onValue;
+                          });
+                        },
+                        icon: (onValue) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
+                      ),
                       labelText: "Enter your Password",
-                      contentPadding:
-                      EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                      contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(color: Colors.blue),
@@ -195,37 +173,38 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-                  SizedBox(height: screenHeight * 0.1),  // 10% of the screen height
+                  SizedBox(height: screenHeight * 0.1),
                   authController.isLoading.value
                       ? CircularProgressIndicator()
                       : Container(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue, // Background color
-                        padding: EdgeInsets.symmetric(vertical: 15),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
-                        shadowColor: Colors.purple.withOpacity(0.5),
-                        elevation: 8,
-                      ),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          authController.isLoggedIn.value = true;
-                          authController.setLoginStatus();
-                          loginUser();
-                        }
-                      },
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              padding: EdgeInsets.symmetric(vertical: 15),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              shadowColor: Colors.purple.withValues(alpha: 0.5),
+                              elevation: 8,
+                            ),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                authController.isLoggedIn.value = true;
+                                authController.setLoginStatus();
+                                loginUser();
+                              }
+                            },
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),

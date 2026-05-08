@@ -1,5 +1,5 @@
-import 'package:asset_management/auth/auth_controller.dart';
 import 'package:get/get.dart';
+import 'package:untitled/auth/auth_controller.dart';
 
 class InitialBinding extends Bindings {
   @override
