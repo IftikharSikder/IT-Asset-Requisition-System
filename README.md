@@ -10,8 +10,6 @@
 
 ---
 
----
-
 ## 📋 Overview
 
 IT Asset Requisition System is a production-ready, Firebase-powered mobile application that streamlines HR operations by providing complete employee lifecycle management and asset allocation tracking. Built for HR professionals who need real-time visibility into organizational resources and personnel.
